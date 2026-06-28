@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DD Engine — AI-Powered Commercial Due Diligence Tool | Shivam Godhwani</title>
+<meta name="description" content="DD Engine is an end-to-end pipeline by Shivam Godhwani that converts a company name into a structured investment brief in under 60 seconds, using Python and LLaMA 3.3 70B.">
+<link rel="stylesheet" href="project.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,500;1,9..144,480&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page">
+  <a href="index.html" class="back">← Back to Dossier</a>
+
+  <span class="proj-kicker">AI / Technical</span>
+  <h1>DD Engine</h1>
+  <p class="meta">AI-Powered Commercial Due Diligence Tool &nbsp;·&nbsp; Solo Build &nbsp;·&nbsp; 2026</p>
+  <div class="outcome-banner">Company name in &nbsp;·&nbsp; <strong>structured investment brief out in under 60 seconds</strong></div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <h2>The Problem</h2>
+      <p>Early-stage commercial due diligence usually starts the same way: an analyst spends an hour pulling together basic facts about a company before any real judgement work can begin — what it does, who runs it, how risky it looks, where the red flags are.</p>
+      <p>That hour is repetitive and structured enough to automate, but it still needs to produce something an analyst would actually trust and use.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>What I Built</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <strong>Single-Input Pipeline</strong>
+            <p>The entire tool runs from one input — a company name — and produces a complete brief without further manual steps.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <strong>Structured Investment Brief</strong>
+            <p>Output includes a verdict, a risk score, a five-dimension scorecard, and a clearly separated list of red flags and opportunities — not a wall of generated text.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <strong>LLM Reasoning Layer</strong>
+            <p>Uses LLaMA 3.3 70B via the Groq API for fast inference, structuring the model's reasoning into the fixed brief format rather than free-form output.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <strong>Analyst-Ready Output</strong>
+            <p>Final documents are generated with ReportLab, designed specifically for readability — built to be handed to an analyst, not just read on screen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>Design Decisions</h2>
+      <p>Speed and structure mattered more than exhaustive depth. A brief that takes 60 seconds and gives a clear verdict is more useful at the screening stage than a slower tool that produces unstructured analysis.</p>
+      <p>The tool is deployable two ways — as a standalone CLI tool for quick individual lookups, or as an API endpoint for integration into a larger workflow.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>Outcome</h2>
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <strong>Under 60 Seconds</strong>
+          <p>From company name to complete structured brief</p>
+        </div>
+        <div class="outcome-card">
+          <strong>5-Dimension Scorecard</strong>
+          <p>Verdict, risk score, and clearly separated red flags and opportunities</p>
+        </div>
+        <div class="outcome-card">
+          <strong>Two Deployment Modes</strong>
+          <p>Standalone CLI tool or API endpoint</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>Stack</h2>
+      <p class="stack-line">Built with <span>Python · LLaMA 3.3 70B (via Groq) · ReportLab</span></p>
+    </div>
+
+    <div class="section-block">
+      <h2>Key Takeaway</h2>
+      <p>The hardest part of applying an LLM to analyst work isn't getting a good answer out of the model — it's forcing that answer into a structure someone can actually act on under time pressure.</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
