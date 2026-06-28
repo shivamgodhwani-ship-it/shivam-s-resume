@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Bot — Internship Application Automation Pipeline | Shivam Godhwani</title>
+<meta name="description" content="Career Bot is a multi-module automation pipeline by Shivam Godhwani that scrapes listings, scores relevance via LLM, auto-tailors resumes, and submits internship applications.">
+<link rel="stylesheet" href="project.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,500;1,9..144,480&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page">
+  <a href="index.html" class="back">← Back to Dossier</a>
+
+  <span class="proj-kicker">AI / Technical</span>
+  <h1>Career Bot</h1>
+  <p class="meta">Internship Application Automation Pipeline &nbsp;·&nbsp; Solo Build &nbsp;·&nbsp; 2026</p>
+  <div class="outcome-banner">Scrape &nbsp;→&nbsp; Score &nbsp;→&nbsp; Tailor &nbsp;→&nbsp; <strong>Submit</strong>, end to end</div>
+
+  <div class="content">
+
+    <div class="section-block">
+      <h2>The Problem</h2>
+      <p>Applying to internships at scale is mechanical work disguised as decision-making: find listings, judge fit, adjust the resume, submit, track. Most of that loop doesn't need a human in it — except the judgement calls that determine whether the system is actually pointing at the right roles.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>What I Built</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <strong>Listing Scraper</strong>
+            <p>Automated scraping of internship listings using Playwright, built to handle dynamic, JavaScript-rendered job boards rather than static pages.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <strong>LLM Relevance Scoring</strong>
+            <p>Each listing is scored for relevance against a candidate profile using the OpenRouter API — filtering volume down to roles actually worth applying to.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <strong>Auto-Tailored Resume Bullets</strong>
+            <p>Resume bullets are automatically adjusted per role based on the listing's language and requirements, rather than submitting one static resume everywhere.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <strong>Automated Submission</strong>
+            <p>The pipeline completes the loop by submitting the tailored application directly, closing the gap between scoring and action.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div>
+            <strong>Flask Tracking Dashboard</strong>
+            <p>A dashboard for end-to-end application tracking, audit logging, and pipeline monitoring — so the automation stays auditable, not a black box.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>Engineering Details</h2>
+      <p>Application state is persisted in SQLite, giving the pipeline a durable record of what's been scraped, scored, tailored, and submitted. API keys are managed through environment variables rather than hardcoded — a basic but easily skipped security practice in personal automation projects.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>Outcome</h2>
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <strong>Multi-Module Pipeline</strong>
+          <p>Scraping, scoring, tailoring, and submission as distinct, auditable stages</p>
+        </div>
+        <div class="outcome-card">
+          <strong>Full Tracking Dashboard</strong>
+          <p>End-to-end visibility into every application the system touches</p>
+        </div>
+        <div class="outcome-card">
+          <strong>Secured Configuration</strong>
+          <p>Environment-variable based API key management</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>Stack</h2>
+      <p class="stack-line">Built with <span>Python · Flask · Playwright · SQLite · OpenRouter API</span></p>
+    </div>
+
+    <div class="section-block">
+      <h2>Key Takeaway</h2>
+      <p>Automation is only useful if you can still see inside it. The dashboard and audit logging mattered as much as the scraping and scoring — a pipeline applying on your behalf needs to stay legible, not just fast.</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
