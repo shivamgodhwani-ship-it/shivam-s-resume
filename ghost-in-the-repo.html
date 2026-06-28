@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghost in the Repo — Git-History Bug-Risk Predictor | Shivam Godhwani</title>
+<meta name="description" content="Ghost in the Repo is a tool by Shivam Godhwani that analyses a repository's own commit history to predict which files are most likely to break next, with plain-English LLM explanations.">
+<link rel="stylesheet" href="project.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,500;1,9..144,480&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page">
+  <a href="index.html" class="back">← Back to Dossier</a>
+
+  <span class="proj-kicker">AI / Technical</span>
+  <h1>Ghost in the Repo</h1>
+  <p class="meta">Git-History Bug-Risk Predictor &nbsp;·&nbsp; Solo Build &nbsp;·&nbsp; 2026</p>
+  <div class="outcome-banner">Doesn't review your diff — <strong>studies your repo's bugfix history</strong> to predict what breaks next</div>
+  <a href="https://github.com/shivamgodhwani-ship-it/ghost-in-the-repo" target="_blank" class="live-link">View on GitHub →</a>
+
+  <div class="content">
+
+    <div class="section-block">
+      <h2>The Problem</h2>
+      <p>Most AI code review tools score a diff in isolation — they look at the change in front of them and judge it on its own. That misses something a diff alone can't show: which files in a codebase have an actual <em>track record</em> of breaking, regardless of what the current change looks like.</p>
+      <p>Ghost in the Repo flips the question. Instead of reviewing what you just wrote, it studies what your repository's own history says about where things tend to go wrong.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>How It Works</h2>
+      <p>For every source file in a repository, the tool computes a risk score from four signals:</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <strong>Bugfix Ratio</strong>
+            <p>The percentage of a file's commits whose message mentions fix, bug, crash, or regression.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <strong>Churn</strong>
+            <p>How often the file changes, log-scaled so a handful of very active files don't dominate the score unfairly.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <strong>Recency</strong>
+            <p>An exponential decay that favours files touched more recently — old churn matters less than current churn.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <strong>Odd-Hour Commits</strong>
+            <p>The share of a file's commits made late at night — a rough proxy for rushed work, used as a tiebreaker signal.</p>
+          </div>
+        </div>
+      </div>
+      <p>Scores are confidence-weighted so a file with a single lucky or unlucky commit can't outrank one with real sustained bugfix history — a small-sample-size trap I hit and fixed during testing. The top-ranked files are then passed to an LLM, which turns the raw numbers into a one-sentence, plain-English explanation of why a given file is risky.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>Validation</h2>
+      <p>Tested against Flask's full commit history (~5,500 commits). The scores matched intuition — CLI and context-handling code ranked highest, which lines up with Flask's actual, documented history of tricky edge cases in exactly those areas.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>Design Decisions</h2>
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <strong>Swappable LLM Backend</strong>
+          <p>Explanations run on the Anthropic API by default, or a local Ollama model with an identical input/output shape — a one-line swap, no other code changes needed</p>
+        </div>
+        <div class="outcome-card">
+          <strong>Score-Only Mode</strong>
+          <p>Can run without any LLM calls for an instant, free risk ranking</p>
+        </div>
+        <div class="outcome-card">
+          <strong>Honest About Limits</strong>
+          <p>Bugfix detection is keyword-based on commit messages, not linked issue trackers — a reasonable proxy, not ground truth</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>Stack</h2>
+      <p class="stack-line">Built with <span>Python · Anthropic API (or local Ollama) · Git log parsing</span></p>
+    </div>
+
+    <div class="section-block">
+      <h2>Key Takeaway</h2>
+      <p>A repository already contains the data needed to flag its own weak points — most tools just don't look backward far enough to find it. The harder part wasn't the scoring math; it was being honest about where a keyword-based proxy stops being reliable, and saying so directly in the documentation rather than overselling the signal.</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
